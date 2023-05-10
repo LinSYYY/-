@@ -1,0 +1,57 @@
+.song_side #Radio{
+    display:none;
+    overflow-y: scroll;
+}
+
+.song_side #Radio .radioBox{
+    display:flex;
+}
+
+.song_side #Radio .comments{
+    width: 100%;
+    height: auto;
+    margin-top:15px;
+}
+
+.song_side #Radio .comments h3{
+    border-bottom: 3px solid #36e2ec;
+}
+
+
+.song_side #Radio .comments .cm_content .contentBox{
+    padding: 15px 0;
+    /* border-top: 1px dotted #ccc; */
+}
+
+.song_side #Radio .comments .cm_content .contentBox .head{
+    float: left;
+    width: 50px;
+    height: 50px;
+    /* border: 1px solid #fff; */
+}
+
+.song_side #Radio .comments .cm_content .contentBox .cntwrap{
+    margin-left: 60px;
+}
+
+.song_side #Radio .mvBox{
+    width: 70%;
+    height: 500px;
+    /* border: 1px solid #fff; */
+}
+
+.bi-arrows-fullscreen{
+    margin-right: 5px;
+}
+
+.song_side #Radio .mvBox #mv{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.song_side #Radio .Similarmv{
+    width: 30%;
+    height: 500px;
+    border: 1px solid #fff;
+}

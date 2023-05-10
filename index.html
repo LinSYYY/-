@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>音乐播放器</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="css/logo.css" />
+    <link rel="stylesheet" href="css/mypage.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  </head>
+  <body>
+    <div class="main-content">
+      <header>
+        <div class="menu_side">
+          <h1>Playlist</h1>
+          <div class="playlist">
+            <h4 class="active" id="Playlist">
+              <span></span><i class="bi bi-music-note-beamed"></i>Playlist
+            </h4>
+            <h4 id="Last Listening">
+              <span></span><i class="bi bi-music-note-beamed"></i>Last Listening
+            </h4>
+            <h4 id="My Library">
+              <span></span><i class="bi bi-music-note-beamed"></i> My Page
+            </h4>
+          </div>
+          <div class="menu_song">
+            <div class="active" id="song_playlist">
+              <li class="songItem">
+                <span>01</span>
+                <img />
+                <h5>
+                  <!-- <div class="subtitle"></div> -->
+                </h5>
+                <i class="bi playListPlay bi-play-circle-fill" id="1"></i>
+              </li>
+              <li class="songItem">
+                <span>02</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill" id="2"></i>
+              </li>
+              <li class="songItem">
+                <span>03</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill" id="3"></i>
+              </li>
+              <li class="songItem">
+                <span>04</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill" id="4"></i>
+              </li>
+              <li class="songItem">
+                <span>05</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill" id="5"></i>
+              </li>
+              <li class="songItem">
+                <span>06</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill" id="6"></i>
+              </li>
+              <li class="songItem">
+                <span>07</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill" id="7"></i>
+              </li>
+              <li class="songItem">
+                <span>08</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill" id="8"></i>
+              </li>
+              <li class="songItem">
+                <span>09</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill" id="9"></i>
+              </li>
+            </div>
+            <div id="song_lastlistening">
+              <li class="songItem">
+                <span>01</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill"></i>
+              </li>
+              <li class="songItem">
+                <span>02</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill"></i>
+              </li>
+              <li class="songItem">
+                <span>03</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill"></i>
+              </li>
+              <li class="songItem">
+                <span>04</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill"></i>
+              </li>
+              <li class="songItem">
+                <span>05</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill"></i>
+              </li>
+              <li class="songItem">
+                <span>06</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill"></i>
+              </li>
+              <li class="songItem">
+                <span>07</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill"></i>
+              </li>
+              <li class="songItem">
+                <span>08</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill"></i>
+              </li>
+              <li class="songItem">
+                <span>09</span>
+                <img />
+                <h5></h5>
+                <i class="bi playListPlay bi-play-circle-fill"></i>
+              </li>
+            </div>
+            <div id="my_library"></div>
+          </div>
+        </div>
+
+        <div class="song_side">
+          <nav>
+            <ul id="song_side_nav">
+              <li id="nav_discover">Discover<span></span></li>
+              <li id="nav_recommended">Recommended<span></span></li>
+              <li id="nav_radio">MV<span></span></li>
+            </ul>
+            <div class="search">
+              <i class="bi bi-search" id="search_btn"></i>
+              <input
+                type="text"
+                placeholder="Search Music..."
+                id="search_input" />
+              <div id="search_hot">
+                <div id="searchHistoryList"></div>
+              </div>
+            </div>
+            <div class="userhead">
+              <div class="user">
+                <h5 id="login">登陆</h5>
+              </div>
+              <div class="m-list">
+                <ul>
+                  <li>退出</li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <div id="Discover">
+            <div class="banner">
+              <div class="slideshow">
+                <div class="image"></div>
+                <!-- 上一张按钮 -->
+                <div class="previous" id="to-pre">❮</div>
+                <!-- 下一张按钮 -->
+                <div class="next" id="to-next">❯</div>
+                <!-- 自由选择小圆点 -->
+                <div class="dots" id="dot-container">
+                  <!-- 小圆点由 js 动态生成 -->
+                </div>
+              </div>
+            </div>
+            <div class="popular_song">
+              <div class="h4">
+                <h4>最新歌曲</h4>
+                <div class="btn_s">
+                  <i id="left_scroll" class="bi bi-arrow-left-short"></i>
+                  <i id="right_scroll" class="bi bi-arrow-right-short"></i>
+                </div>
+              </div>
+              <div class="pop_song">
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="10"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle popsubtitle"></div>
+                  </h5>
+                </li>
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="11"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle"></div>
+                  </h5>
+                </li>
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="12"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle popsubtitle"></div>
+                  </h5>
+                </li>
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="13"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle popsubtitle"></div>
+                  </h5>
+                </li>
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="14"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle popsubtitle"></div>
+                  </h5>
+                </li>
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="15"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle popsubtitle"></div>
+                  </h5>
+                </li>
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="16"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle popsubtitle"></div>
+                  </h5>
+                </li>
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="17"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle popsubtitle"></div>
+                  </h5>
+                </li>
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="18"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle popsubtitle"></div>
+                  </h5>
+                </li>
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="19"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle popsubtitle"></div>
+                  </h5>
+                </li>
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="20"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle popsubtitle"></div>
+                  </h5>
+                </li>
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="21"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle popsubtitle"></div>
+                  </h5>
+                </li>
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="22"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle popsubtitle"></div>
+                  </h5>
+                </li>
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="23"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle popsubtitle"></div>
+                  </h5>
+                </li>
+                <li class="songItem">
+                  <div class="img_play">
+                    <i class="bi playListPlay bi-play-circle-fill" id="17"></i>
+                  </div>
+                  <h5 class="img_play_title">
+                    <br />
+                    <div class="subtitle popsubtitle"></div>
+                  </h5>
+                </li>
+              </div>
+            </div>
+            <div class="popular_artists">
+              <div class="h4">
+                <h4>热门歌手</h4>
+                <div class="btn_s">
+                  <i id="left_scrolls" class="bi bi-arrow-left-short"></i>
+                  <i id="right_scrolls" class="bi bi-arrow-right-short"></i>
+                </div>
+              </div>
+              <div class="item"></div>
+            </div>
+          </div>
+          <div id="searchResults">
+            <ul class="musiclist">
+              <li>我知道你急，但你先别急</li>
+            </ul>
+          </div>
+          <div id="Recommended">
+            <h3><i class="bi bi-music-note-list"></i>热门歌单</h3>
+            <ul class="Top_playlists">
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="24"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="25"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="26"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="27"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="28"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="29"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="30"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="31"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="32"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="33"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="34"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="35"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="36"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="37"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="38"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="39"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="40"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="41"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="24"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="25"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="26"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="27"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="28"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="29"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="30"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="31"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="32"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="33"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="34"></i>
+                </div>
+              </li>
+              <li class="topplaylists">
+                <div class="playlists_play">
+                  <i class="bi playListPlay bi-play-circle-fill" id="35"></i>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="Songlists">
+            <div id="top_content">
+              <img class="top_img" />
+              <div class="buttons">
+                <h1 class="top_title"></h1>
+                <div class="creatorBox">
+                  <img src="" alt="" class="creatorImg" />
+                  <p class="creatorName"></p>
+                  <p>创建</p>
+                </div>
+                <button class="Playall">播放全部</button>
+                <div class="tags">
+                  <p>标签:</p>
+                </div>
+                <p class="description"></p>
+              </div>
+            </div>
+            <div class="content">
+              <div class="nav">
+                <h6>标题</h6>
+                <h6>歌手</h6>
+                <h6>专辑</h6>
+              </div>
+              <div class="singlelist"></div>
+            </div>
+          </div>
+          <div id="Lyrics">
+            <div id="record-container">
+              <img id="record-img" />
+              <!-- <div id="needle"></div> -->
+            </div>
+            <div id="lrc">
+              <ul id="ullrc"></ul>
+            </div>
+          </div>
+          <div id="Radio">
+            <div class="radioBox">
+              <div class="mvBox">
+                <video
+                  id="mv"
+                  src=" http://blog.like927.cn/wp-content/uploads/2023/02/再见深海-唐汉霄-深海OST-【就算大梦终将瓦解别回头-勇敢地向前】【动态歌词-Lyrics-Video】_2.mp4"></video>
+                <div>
+                  <svg
+                    t="1683661665983"
+                    class="videoplay"
+                    viewBox="0 0 1024 1024"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    p-id="3505"
+                    width="40"
+                    height="40">
+                    <path
+                      d="M183.5 1024c-11.9 0-23.9-1.6-35.7-4.8-34.8-9.5-63.7-31.9-81.6-63.2-11.1-19.4-17.3-41.6-17.7-64.1V133.1C50.3 57.5 112.6-2.2 186.8 0.1c22.4 0.5 44.4 6.7 63.8 17.7l0.1 0.1 658 379c63.4 36.2 85.7 117.6 49.4 181.2-11.6 20.2-28.3 37.1-48.4 48.9l-659.4 379.2c-20.7 11.8-43.6 17.8-66.8 17.8z m0.1-935.3c-25.1 0-45.8 20.1-46.4 45.4V891c0.1 6.7 2.2 14.3 6.1 20.9 6.1 10.7 16.1 18.4 28 21.7 11.9 3.3 24.3 1.7 35-4.4l659-379c6.4-3.7 12-9.4 15.9-16.1 12-21.1 4.6-48.1-16.5-60.2l-658-379c-6.6-3.8-14.2-5.9-21.9-6.1-0.5 0-0.9-0.1-1.2-0.1z"
+                      fill="#8DCBEB"
+                      p-id="3506"></path>
+                  </svg>
+                  <svg
+                    t="1683661681365"
+                    class="videoplay"
+                    style="display: none"
+                    viewBox="0 0 1024 1024"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    p-id="3659"
+                    width="40"
+                    height="40">
+                    <path
+                      d="M733.4 1024c-83.9 0-152.2-68.3-152.2-152.2V152.2C581.2 68.3 649.5 0 733.4 0s152.2 68.3 152.2 152.2v719.6c0 83.9-68.3 152.2-152.2 152.2z m0-941c-38.2 0-69.2 31-69.2 69.2v719.6c0 38.2 31 69.2 69.2 69.2s69.2-31 69.2-69.2V152.2c0-38.1-31-69.2-69.2-69.2z m-442.8 941c-83.9 0-152.2-68.3-152.2-152.2V152.2C138.4 68.3 206.7 0 290.6 0s152.2 68.3 152.2 152.2v719.6c0 83.9-68.3 152.2-152.2 152.2z m0-941c-38.1 0-69.2 31-69.2 69.2v719.6c0 38.2 31 69.2 69.2 69.2s69.2-31 69.2-69.2V152.2c0-38.1-31.1-69.2-69.2-69.2z"
+                      fill="#8dcbeb"
+                      p-id="3660"></path>
+                  </svg>
+                  <svg
+                    t="1683661810954"
+                    class="videoplay"
+                    viewBox="0 0 1024 1024"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    p-id="6412"
+                    width="40"
+                    height="40"
+                    style="float: right">
+                    <path
+                      d="M858.7 95.96H754.69v69.34H858.7v104.01h69.34V95.96zM858.7 858.7H754.69v69.34H928.04V754.69H858.7zM165.3 165.3h104.01V95.96H95.96V269.31h69.34zM165.3 754.69H95.96V928.04H269.31V858.7H165.3zM789.36 685.35v-346.7c0-57.44-46.57-104.01-104.01-104.01h-346.7c-57.44 0-104.01 46.57-104.01 104.01v346.7c0 57.44 46.57 104.01 104.01 104.01h346.7c57.44 0 104.01-46.57 104.01-104.01z"
+                      fill="#469AD5"
+                      p-id="6413"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="Similarmv" style="background-image: url();"></div>
+            </div>
+            <div class="comments">
+              <h3>评论</h3>
+              <div class="cm_content">
+                <div class="contentBox">
+                  <div class="head" style="background-image: url(./img/user.jpg);background-size: 100%;">
+                  </div>
+                  <div class="cntwrap">
+                    <p class="cnt_usernam">王俊凯</p>
+                    <p>我是一条评论，一条长长的评论</p>
+                  </div>
+                  <div class="rp">我是日期，今天是2023.05.08</div>
+                </div>
+                <div class="contentBox">
+                  <div class="head" style="background-image: url(./img/user.jpg);background-size: 100%;">
+                  </div>
+                  <div class="cntwrap">
+                    <p class="cnt_usernam">王俊凯</p>
+                    <p>我是一条评论，一条长长的评论</p>
+                  </div>
+                  <div class="rp">我是日期，今天是2023.05.08</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="library_side">
+          <div class="page_topcontent">
+            <img src="./img/user.jpg" alt="头像" id="userimg" />
+            <div class="info">
+              <div class="info_name">
+                <span id="username">用户名</span>
+                <button>编辑个人资料</button>
+              </div>
+              <div class="info_data">
+                <li>
+                  <strong id="event_count"></strong>
+                  <span id="city">动态</span>
+                </li>
+                <li>
+                  <strong id="follow_count"></strong>
+                  <span>关注</span>
+                </li>
+                <li>
+                  <strong id="fan_count"></strong>
+                  <span>粉丝</span>
+                </li>
+              </div>
+              <div class="region">
+                <span id="introduction">个人简介</span>
+                <span id="born">出生日期</span>
+                <span id="formerly">出生日期</span>
+              </div>
+            </div>
+          </div>
+          <div class="page_content">
+            <div class="nav">
+              <i class="bi bi-music-note-list"></i>
+              <h3>我创建的歌单</h3>
+              <button id="newlistid">新建歌单</button>
+            </div>
+            <div class="mysonglist">
+              <li class="listItem">
+                <div class="img_play">
+                  <i class="bi playListPlay bi-play-circle-fill"></i>
+                </div>
+                <h5>我喜欢的音乐</h5>
+              </li>
+            </div>
+            <div id="newlist">
+              <div class="form">
+                <div class="logoimg">
+                  <!-- <img src="E:\Codefield\CODE-FRONT\音乐播放器 - 副本\img\user.jpg"> -->
+                  <img src="img/user.jpg" alt="" srcset="" />
+                </div>
+                <div class="account">
+                  <div class="account-form">
+                    <h2 style="color: aquamarine">新建歌单</h2>
+                    <input
+                      class="newdata"
+                      type="text"
+                      placeholder="请输入歌单名" />
+                    <input
+                      class="newdata"
+                      type="text"
+                      placeholder="请输入歌单简介" />
+                    <div class="btn">
+                      <button>取消</button>
+                      <button>确定</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="mylikelist">
+              <li class="listItem">
+                <div class="img_play">
+                  <img src="" />
+                  <i class="bi playListPlay bi-play-circle-fill"></i>
+                </div>
+                <h5>这是一个例子，具体需要动态添加</h5>
+              </li>
+            </div> -->
+          </div>
+        </div>
+        <div class="master_play">
+          <div class="wave">
+            <div class="wave1"></div>
+            <div class="wave1"></div>
+            <div class="wave1"></div>
+          </div>
+          <img id="play_img" />
+          <h5 id="play_h5">歌名</h5>
+          <i class="bi bi-heart" style="color: white"></i>
+          <div class="icon">
+            <i class="bi bi-skip-start-fill" id="back"></i>
+            <i class="bi bi-play-fill" id="masterPlay"></i>
+            <i class="bi bi-skip-end-fill" id="next"></i>
+          </div>
+          <span id="currentStart">0:00</span>
+          <div class="bar">
+            <input type="range" id="seek" min="0" value="0" max="100" />
+            <div class="bar2" id="bar2"></div>
+            <div class="dot"></div>
+          </div>
+          <span id="currentEnd">0:00</span>
+
+          <div class="vol">
+            <i class="bi bi-volume-down-fill" id="vol_icon"></i>
+            <input type="range" id="vol" min="0" value="0" max="100" />
+            <div class="vol_bar"></div>
+            <div class="dot" id="vol_dot"></div>
+          </div>
+          <!-- 顺序，随机，循环 -->
+          <div class="mode">
+            <svg
+              id="icon1"
+              t="1683470707282"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="2065"
+              width="200"
+              height="200">
+              <path
+                d="M725.333333 170.666667V88.234667a21.333333 21.333333 0 0 1 34.986667-16.426667l175.786667 146.474667a21.333333 21.333333 0 0 1-13.696 37.717333H85.333333V170.666667h640zM85.333333 768h853.333334v85.333333H85.333333v-85.333333z m0-298.666667h853.333334v85.333334H85.333333v-85.333334z"
+                p-id="2066"
+                fill="#ffffff"></path>
+            </svg>
+            <svg
+              id="icon2"
+              t="1683472813509"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="5632"
+              width="200"
+              height="200">
+              <path
+                d="M914.2 705L796.4 596.8c-8.7-8-22.7-1.8-22.7 10V688c-69.5-1.8-134-39.7-169.3-99.8l-45.1-77 47-80.2c34.9-59.6 98.6-97.4 167.4-99.8v60.1c0 11.8 14 17.9 22.7 10l117.8-108.1c5.8-5.4 5.8-14.6 0-19.9L796.4 165c-8.7-8-22.7-1.8-22.7 10v76H758c-4.7 0-9.3 0.8-13.5 2.3-36.5 4.7-72 16.6-104.1 35-42.6 24.4-78.3 59.8-103.1 102.2L513 432l-24.3-41.5c-24.8-42.4-60.5-77.7-103.1-102.2C343 263.9 294.5 251 245.3 251H105c-22.1 0-40 17.9-40 40s17.9 40 40 40h140.3c71.4 0 138.3 38.3 174.4 99.9l47 80.2-45.1 77c-36.2 61.7-103 99.9-174.4 99.9H105c-22.1 0-40 17.9-40 40s17.9 40 40 40l142 0.1h0.2c49.1 0 97.6-12.9 140.2-37.3 42.7-24.4 78.3-59.8 103.2-102.2l22.4-38.3 22.4 38.3c24.8 42.4 60.5 77.8 103.2 102.2 33.1 18.9 69.6 30.9 107.3 35.4 3.8 1.2 7.8 1.8 11.9 1.8l15.9 0.1v55c0 11.8 14 17.9 22.7 10L914.2 725c5.9-5.5 5.9-14.7 0-20z"
+                p-id="5633"
+                fill="#ffffff"></path>
+            </svg>
+            <svg
+              id="icon3"
+              t="1683470416272"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="1762"
+              width="200"
+              height="200">
+              <path
+                d="M928 476.8c-19.2 0-32 12.8-32 32v86.4c0 108.8-86.4 198.4-198.4 198.4H201.6l41.6-38.4c6.4-6.4 12.8-16 12.8-25.6 0-19.2-16-35.2-35.2-35.2-9.6 0-22.4 3.2-28.8 9.6l-108.8 99.2c-16 12.8-12.8 35.2 0 48l108.8 96c6.4 6.4 19.2 12.8 28.8 12.8 19.2 0 35.2-12.8 38.4-32 0-12.8-6.4-22.4-16-28.8l-48-44.8h499.2c147.2 0 265.6-118.4 265.6-259.2v-86.4c0-19.2-12.8-32-32-32zM96 556.8c19.2 0 32-12.8 32-32v-89.6c0-112 89.6-201.6 198.4-204.8h496l-41.6 38.4c-6.4 6.4-12.8 16-12.8 25.6 0 19.2 16 35.2 35.2 35.2 9.6 0 22.4-3.2 28.8-9.6l105.6-99.2c16-12.8 12.8-35.2 0-48l-108.8-96c-6.4-6.4-19.2-12.8-28.8-12.8-19.2 0-35.2 12.8-38.4 32 0 12.8 6.4 22.4 16 28.8l48 44.8H329.6C182.4 169.6 64 288 64 438.4v86.4c0 19.2 12.8 32 32 32z"
+                p-id="1763"
+                fill="#ffffff"></path>
+              <path
+                d="M544 672V352h-48L416 409.6l16 41.6 60.8-41.6V672z"
+                p-id="1764"
+                fill="#ffffff"></path>
+            </svg>
+          </div>
+        </div>
+      </header>
+      <div class="logo">
+        <div class="form">
+          <div class="logoimg">
+            <!-- <img src="E:\Codefield\CODE-FRONT\音乐播放器 - 副本\img\user.jpg"> -->
+            <img src="img/user.jpg" alt="" srcset="" />
+          </div>
+          <div class="account">
+            <div class="account-form" style="height: 350px">
+              <h2>登录</h2>
+              <div id="qrcode"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="login">
+        <div class="login_top">
+            <h4>登陆</h4>
+            <i class="bi bi-x-lg"></i>
+        </div>
+        <div class="login_content">
+            <div class="center">
+                <div class="center_top">
+                    <img src="./img/example.png" alt="">
+                    <div class="QRcode">
+                        <h3>扫码登陆</h3>
+                        <div class="code"></div>
+                        <p>使用网易云APP扫码登陆</p>
+                    </div>
+                </div>
+                <div id="scan_wrapper">
+                    <div class="scan_success">
+                        <img src="./img/success.png" alt="">
+                        <h3>扫描成功</h3>
+                        <p>请在手机上确认登陆</p>
+                    </div>
+                    
+                </div>
+                <div class="center_down">
+                    <button>选择其他登陆模式</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+      <audio
+        src="http://blog.like927.cn/wp-content/uploads/2023/02/顺风-赵贝尔（《良辰美景好时光-Love-Scenery》插曲）【动态歌词】.mp4"></audio>
+    </div>
+    <!-- <script src="app.js"></script>  -->
+    <script src="js/area.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/musicplay.js"></script>
+    <script src="js/video.js"></script>
+    <script src="js/recommend.js"></script>
+    <script src="js/transform.js"></script>
+    <script src="js/latestsong.js"></script>
+    <script src="js/popularsingers.js"></script>
+    <script src="js/banner.js"></script>
+    <script src="js/control.js"></script>
+    <script src="js/lyrics.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/lastlistening.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/newlist.js"></script>
+  </body>
+</html>

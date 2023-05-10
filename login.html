@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+  </style>
+ 
+</head>
+<body>
+
+<script>
+<!--  存放登录的key-->
+  var key = ''
+  function ajaxRequest(method, url, data, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url+data, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        callback(JSON.parse(xhr.responseText));
+      }
+    };
+    xhr.send(JSON.stringify(data));
+  }
+  var QRcodes = 'https://like927.cn/'
+  var api ='http://www.zhangxiaoyue.cn:3000'
+  ajaxRequest('GET',`${api}/login/qr/key?timestamp=`,Date.parse(new Date()),function (data){
+    key = data.data.unikey
+    ajaxRequest('GET',`${api}/login/qr/create?key=${key}&`,`timestamp=${Date.parse(new Date())}`,function (data){
+
+      QRcodes=data.data.qrurl
+      var demo=  new QRCode(document.getElementById("qrcode"), {
+        text: QRcodes,
+        width: 256,
+        height: 256,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    })
+  })
+
+  var timers= setInterval(function(){
+    ajaxRequest('GET',`${api}/login/qr/check?key=${key}&`,`timestamp=${Date.parse(new Date())}`,function (data){
+      if (data.code== 800) {
+        h2.innerText = '二维码过期'
+      } else if (data.code == 801) {
+        h2.innerText = '等待扫码'
+      } else if(data.code == 803){
+          h2.innerText = '登录成功'
+          console.log(data);
+          localStorage.setItem("cookie",data.cookie);
+          clearInterval(timers);
+        } else if (data.code == 802) {
+        h2.innerText = data.nickname;
+        localStorage.setItem("avatarUrl",data.avatarUrl);
+        console.log(data);
+        }
+    })
+  },1000);
+  var h2 = document.querySelector('h2');
+  h2.onclick = function (){
+
+  }
+</script>
+</body>
+</html>
